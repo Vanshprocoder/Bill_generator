@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tax Invoice</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+
+<!-- Form for adding items -->
+<div class="container">
+  <h2>Add Item</h2>
+  <form id="addItemForm">
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" id="customer_name" name="customer_name" required><br>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required><br>
+
+        <label for="Address">Address:</label>
+        <input type="text" id="address" name="Address" required><br>
+
+        <label for="Gstin">GSTIN:</label>
+        <input type="text" id="gstin" name="Gstin" required><br>
+
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" name="itemName" required><br>
+        
+        <label for="hsn">HSN:</label>
+        <input type="text" id="hsn" name="hsn" required><br>
+        
+        <label for="uom">UOM:</label>
+        <input type="text" id="uom" name="uom" required><br>
+        
+        <label for="qty">Quantity:</label>
+        <input type="number" id="qty" name="qty" min="1" required><br>
+        
+        <label for="rate">Rate:</label>
+        <input type="number" id="rate" name="rate" min="0" step="0.01" required><br>
+        
+        <button type="button" onclick="addItem()">Add Item</button>
+  </form>
+</div>
+
+<div class="container print-container">
+  <table>
+    <tr>
+      <th>
+        GSTIN: 07AVSPH8478A1Z7
+      </th>
+      <th rowspan="2">
+        <center><h1>DOT PRINT</h1></center>
+      </th>
+    </tr>
+    <tr>
+      <th>INVOICE: <span id="invoiceNumber"></span></th>
+    </tr>
+    <tr>
+      <th>
+        INVOICE DATE: <span id="invoiceDate"></span>
+      </th>
+      <td>
+        HOUSE NO. 49 , KHASRA NO. 61/4, BLOCK-I-1 , BUDH VIHAR PHASE -1, NEAR RADHIKA MANDIR , DELHI 110086
+      </td>
+    </tr>
+    <tr>
+      <th>
+        E-mail :
+      </th>
+      <td>
+         neerajnagpal26@gmail.com <br>( Mob: 9212119211)
+      </td>
+    </tr>
+  </table>
+  <center><h2>Tax Invoice</h2></center>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3">Billed To: <span id="billed_to"></span></th>
+        <th colspan="5">Delivered To: <span id="delivered_to"></span></th>
+      </tr>
+      <tr>
+        <th colspan="3" id="Address">Address: <span id="b_address"></span></th>
+        <th colspan="5" id="Address">Address: <span id="d_address"></span></th>
+      </tr>
+      <tr>
+        <th id="Gstin" colspan="3">GSTIN: <span id="b_gstin"></span></th>
+        <th id="Gstin" colspan="5">GSTIN: <span id="d_gstin"></span></th>
+      </tr>
+      <tr>
+        <th colspan="3">STATE: <span id="b_state"></span></th>
+        <th colspan="5">STATE: <span id="d_state"></span></th>
+      </tr>
+      <tr>
+        <th>Sl. No.</th>
+        <th>Description of Goods / Service</th>
+        <th>HSN / SAC</th>
+        <th>UOM</th>
+        <th>Qty</th>
+        <th>Rate</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody id="itemDetails">
+      
+    </tbody>
+  </table>
+  <div>
+    <table>
+      <tr>
+        <td> </td>
+        <td> Total Amount Before Tax: </td>
+        <td> <span id="totalAmountBeforeTax"></span></td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> CGST 9%: </td>
+        <td> <span id="cgstAmount"></span></td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> SGST 9%: </td>
+        <td> <span id="sgstAmount"></span></td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> IGST 9%: </td>
+        <td> <span id="igstAmount"></span></td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> Total Tax Amount: </td> 
+        <td> <span id="totalTaxAmount"></span></td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> Invoice Total (IN WORDS): </td>
+        <td> <span id="invoiceTotalInWords"></span></td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> Total Amount After Tax: </td>
+        <td> <span id="totalAmountAfterTax"></span></td>
+      </tr>
+      <tr >
+        <td> </td>
+        <td></td>
+        <td rowspan="5"> For DOT PRINT </td> 
+      </tr>
+      <tr>
+        <td rowspan="5"> </td>
+      </tr>
+      <tr>
+        <td rowspan="4">All Cheques / Draft Payment To Be In The Name Of DOT PRINT</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<button onclick="printInvoice()" class="print-btn">Print Invoice</button>
+
+
+<script src="script.js"></script>
+</body>
+</html>
